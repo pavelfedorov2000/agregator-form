@@ -1,0 +1,115 @@
+.btn {
+    @extend %flex-center;
+    min-width: 12rem;
+    height: 4.5rem;
+    border-radius: 3rem;
+    border: 0.3rem solid var(--blue);
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    font-weight: 600;
+    color: #fff;
+    transition: .3s all;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #0000FF;
+        }
+    }
+
+    &:active {
+        background-color: #3131FF;
+    }
+
+    &:focus {
+        text-decoration: underline;
+    }
+
+    &:disabled {
+        border-color: #ACB5BE;
+        color: #ACB5BE;
+    }
+
+    @media(max-width: 500px) {
+        //height: 3.9rem;
+    }
+}
+
+.form-buttons {
+    @extend %flex-row;
+
+    > * {
+        &:last-child {
+            margin-left: auto;
+        }
+    }
+}
+
+.back-btn {
+    @media(max-width: 500px) {
+        width: 9.4rem;
+    }
+}
+
+.next-btn {
+    @media(max-width: 500px) {
+        width: 9.2rem;
+    }
+}
+
+.edit-btn {
+    width: 11.5rem;
+
+    @media(max-width: 500px) {
+        width: 8.7rem;
+        margin-top: 2rem;
+    }
+}
+
+.next-btn {
+    background-color: $blue;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #fff;
+            color: $blue;
+            //box-shadow: 0px 0px 2rem #0000FF;
+        }
+    }
+
+    &:active {
+        background-color: #3131FF;
+    }
+
+    /* &:focus {
+        border: 0.2rem solid #FFFFFF;
+    } */
+
+    &:disabled {
+        background-color: #ACB5BE;
+    }
+}
+
+.download-pdf {
+    width: 16.5rem;
+
+    @media(max-width: 500px) {
+        width: 17.1rem;
+        //width: 171/375 * 100%;
+    }
+}
+
+.book-call {
+    width: 12.3rem;
+
+    @media(max-width: 500px) {
+        width: 13.3rem;
+        //width: 133/375 * 100%;
+    }
+}
+
+.download-pdf,
+.book-call {
+    @media(max-width: 500px) {
+        height: 3.9rem;
+    }
+}

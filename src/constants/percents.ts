@@ -1,0 +1,1 @@
+export const PERCENTS: number[] = [12.5, 25, 27.5, 50, 62.5, 75, 87.5, 100];
