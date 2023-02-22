@@ -3,7 +3,7 @@ import closeIcon from '../assets/images/icons/close.svg';
 import { TooltipList } from '../enums/Tooltip';
 import { Tooltip as TooltipType } from '../interfaces/Tooltip';
 
-const Tooltip = ({ text, type }: TooltipType) => {
+const Tooltip = ({ text, type, href }: TooltipType) => {
     return (
         <div className="tooltip">
             <button className={classNames('tooltip__btn', {
@@ -13,7 +13,7 @@ const Tooltip = ({ text, type }: TooltipType) => {
                 {type === TooltipList.Attention ? '!' : '?'}
             </button>
             <div className="tooltip__info">
-                <span>{text}</span>
+                {href ? <a href={href}>{text}</a> : <span>{text}</span>}
                 <button className="tooltip__close-btn" type="button">
                     <img src={closeIcon} alt="крестик" />
                 </button>

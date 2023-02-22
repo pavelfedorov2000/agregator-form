@@ -1,0 +1,119 @@
+// ===================== RADIO ===================== //
+.radiobutton {
+    $this: &;
+
+    &__input {
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        clip: rect(0 0 0 0);
+        //padding-top: 6.8rem;
+
+        &:checked ~ #{$this} {
+            &__style {
+                border-width: 0.5rem;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__style {
+        flex-shrink: 0;
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 0.1rem solid #fff;
+    }
+
+    &__text {
+        cursor: pointer;
+        margin-left: 4rem;
+
+        @media(max-width: 767px) {
+            margin-left: 3rem;
+        }
+
+        @media(max-width: 767px) {
+            font-size: 1.8rem;
+            padding-top: 0;
+            margin-left: 6.8rem;
+        }
+
+        @media(max-width: 500px) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &--style {
+        &_range {
+            @extend %flex-col-center;
+            text-align: center;
+
+            @media(max-width: 767px) {
+                flex-direction: row;
+            }
+
+            #{$this} {
+                &__input {
+                    &:checked ~ #{$this} {
+                        &__style {
+                            &:before {
+                                content: '';
+                                width: 6.3rem;
+                                height: 6.3rem;
+                                border-radius: 50%;
+                                background-color: #000;
+                                border: 0.2rem solid #fff;
+                                position: absolute;
+                                top: -2.4rem;
+                                right: -2.4rem;
+                                bottom: -2.4rem;
+                                left: -2.4rem;
+                                z-index: -1;
+
+                                @media(max-width: 500px) {
+                                    width: 4rem;
+                                    height: 4rem;
+                                    top: -1.2rem;
+                                    right: -1.2rem;
+                                    bottom: -1.2rem;
+                                    left: -1.2rem;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &__style {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    border-radius: 50%;
+                    background-color: #fff;
+                }
+
+                &__text {
+                    padding-top: 6.8rem;
+                    margin-left: 0;
+
+                    @media(max-width: 767px) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.radio-inputs {
+    .step-item__check-fields {
+        @media(max-width: 767px) {
+            grid-template-columns: repeat(2, auto);
+            column-gap: 7rem;
+        }
+    }
+}

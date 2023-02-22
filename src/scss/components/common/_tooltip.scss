@@ -1,4 +1,6 @@
 .tooltip {
+    $this: &;
+
     position: relative;
     font-size: 1.4rem;
     padding-left: 1.3rem;
@@ -20,7 +22,7 @@
             color: #fff;
             font-weight: 600;
 
-            & + .tooltip__info {
+            & + #{$this}__info {
                 @media(max-width: 500px) {
                     white-space: nowrap;
                 }
@@ -32,7 +34,7 @@
             border-color: rgba(255, 255, 255, 0.6);
             color: rgba(255, 255, 255, 0.6);
 
-            & + .tooltip__info {
+            & + #{$this}__info {
                 @media(max-width: 500px) {
                     white-space: normal;
                 }
@@ -50,14 +52,15 @@
         padding: 0.6rem 1.5rem;
         color: #000;
         white-space: nowrap;
-        transition: .3s all;
         visibility: hidden;
         opacity: 0;
+        pointer-events: none;
+        transition: .3s all;
 
-        &--active {
+        /* &--active {
             visibility: visible;
             opacity: 1;
-        }
+        } */
 
         @media(max-width: 500px) {
             right: 2rem;
@@ -86,6 +89,16 @@
 
         @media(max-width: 1024px) {
             display: block;
+        }
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            #{$this}__info {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+            }
         }
     }
 }

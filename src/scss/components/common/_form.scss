@@ -19,6 +19,16 @@
         padding-bottom: 0.7rem;
     }
 
+    &--size {
+        &_small {
+            width: 17rem;
+
+            @media(max-width: 992px) {
+                width: 100%;
+            }
+        }
+    }
+
     &::placeholder {
         color: #ffff;
     }
@@ -34,12 +44,8 @@
     }
 }
 
-.small-input {
-    width: 17rem;
-
-    @media(max-width: 992px) {
-        width: 100%;
-    }
+.input-wrap {
+    @extend %vertical-align;
 }
 
 .textarea {

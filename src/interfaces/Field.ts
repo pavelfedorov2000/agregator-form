@@ -1,9 +1,9 @@
 import { Checkbox } from "./Checkbox";
 import { FieldItems } from "./FieldItems";
-import { Input } from "./Input";
 import { Label } from "./Label";
 
 export interface Field {
+    className?: string;
     label?: Label;
     name?: string;
     required?: boolean;
@@ -12,4 +12,8 @@ export interface Field {
     cols?: FieldItems[];
     type?: string;
     span?: number;
+    style?: string;
+    title?: string;
+    descr?: string;
+    size?: string;
 }

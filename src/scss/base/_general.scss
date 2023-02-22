@@ -36,7 +36,7 @@
 
 .col-4 {
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
+    gap: 2rem;
 }
 
 .span-2 {
@@ -48,8 +48,13 @@
 }
 
 .step {
+    display: none;
     width: 77rem;
     flex-shrink: 0;
+
+    &.active {
+        display: block;
+    }
 
     @media(max-width: 992px) {
         width: 100%;
@@ -136,31 +141,6 @@
     }
 }
 
-.color {
-    .check-style {
-        width: 100%;
-        height: 7rem;
-        border: none;
-
-        @media(max-width: 500px) {
-            height: 5rem;
-        }
-    }
-
-    .check-box:checked + .check-style:before {
-        background-size: 2.5rem 3.1rem;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    &--light {
-        .check-box:checked + .check-style:before {
-            //background-image: url(../img/icons/black-check.svg);
-        }
-    }
-}
-
 .result-color {
     width: 100%;
     height: 7rem;
@@ -234,36 +214,36 @@
     }
 
     &__fields {
-        grid-row-gap: 3rem;
+        row-gap: 3rem;
 
         @media(max-width: 767px) {
-            grid-row-gap: 2rem;
+            row-gap: 2rem;
         }
     }
 
     &__col {
         display: grid;
         gap: 3rem;
+        align-content: start;
 
         @media(max-width: 767px) {
             gap: 2rem;
         }
     }
 
-    &__check-fields {
-        grid-row-gap: 3rem;
+    /* &__check-fields {
+        row-gap: 3rem;
         align-items: flex-start;
 
         @media(max-width: 767px) {
-            grid-row-gap: 2rem;
+            row-gap: 2rem;
         }
-    }
+    } */
 
     // .step-item__field
 
     &__check-item {
         display: flex;
-        //@extend %vertical-align;
         flex-wrap: wrap;
 
         > label {
@@ -279,12 +259,6 @@
                 margin-left: 0.5rem;
             }
         }
-
-        /* &--drop-input {
-            &+.step-item__check-input {
-                display: none;
-            }
-        } */
     }
 
     &__check-input {
@@ -335,19 +309,15 @@
         }
     }
 
-    &__input-wrap {
-        @extend %vertical-align;
-    }
-
     &__input-field {
         @extend %vertical-align;
     }
 
     &__inputs {
-        grid-column-gap: 10.8rem;
+        column-gap: 10.8rem;
 
         @media(max-width: 992px) {
-            grid-column-gap: 5rem;
+            column-gap: 5rem;
         }
     }
 
@@ -372,10 +342,6 @@
             font-size: 1.4rem;
             line-height: 1.4rem;
         }
-    }
-
-    &__field {
-        //@extend %vertical-align;
     }
 
     &__line-radios {
@@ -409,13 +375,6 @@
     }
 
     &__line-radio {
-        @extend %flex-col-center;
-        text-align: center;
-
-        @media(max-width: 767px) {
-            flex-direction: row;
-        }
-
         &:first-child {
             max-width: 13.1rem;
             text-align: left;
@@ -1152,7 +1111,6 @@ input[name="target_ip"] {
 }
 
 .thanks {
-
     position: relative;
     padding-top: 21.5rem;
     padding-bottom: 40rem;
@@ -1173,7 +1131,6 @@ input[name="target_ip"] {
 
     &__img--left {
         width: 53.3rem;
-        //height: 58.1rem;
         top: 13rem;
         left: -0.5rem;
 

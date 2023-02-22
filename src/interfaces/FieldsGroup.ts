@@ -1,8 +1,14 @@
 import { Field } from "./Field";
+import { Tooltip } from "./Tooltip";
 
 export interface FieldsGroup {
-    legend?: string;
+    legend?: {
+        text: string;
+        small?: string;
+        tooltip?: Tooltip;
+    };
     name?: string;
     columnsCount?: number;
     fields: Field[];
+    fieldsClass?: string;
 }

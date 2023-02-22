@@ -6,9 +6,9 @@ const Form = () => {
     const { data } = useTypedSelector((state) => state.formReducer);
 
     return (
-        <form>
-            {data.map((step) => (
-                <Step {...step} />
+        <form id="form">
+            {data.map((step, index) => (
+                <Step index={index} {...step} />
             ))}
             <FormButtons />
         </form>
