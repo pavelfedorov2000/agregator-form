@@ -1,5 +1,5 @@
 export interface FormButton {
-    //onClick: () => void;
+    onClick: () => void;
     text: string;
     background?: boolean;
 }

@@ -6,9 +6,7 @@ import RadioButton from "./RadioButton";
 import TextField from "./TextField";
 import Tooltip from "./Tooltip";
 
-const Field = ({ label, name, required, items, cols, value, type, span, style, descr, title, size, className }: IField) => {
-    console.log(items);
-
+const Field = ({ label, name, fieldsName, required, items, cols, value, type, span, style, descr, title, size, className }: IField) => {
     return (
         <>
             {
@@ -16,14 +14,14 @@ const Field = ({ label, name, required, items, cols, value, type, span, style, d
                     <>
                         {
                             items && items.map((item, index) => (
-                                <Checkbox key={index} style={style} {...item} />
+                                <Checkbox key={index} style={style} name={name} {...item} />
                             ))
                         }
                         {
                             cols && cols.map((col, i) => (
                                 <div key={i} className="step-item__col">
                                     {col.items?.map((item, j) => (
-                                        <Checkbox key={j} style={style} {...item} />
+                                        <Checkbox key={j} style={style} name={name} {...item} />
                                     ))}
                                 </div>
                             ))
@@ -34,9 +32,9 @@ const Field = ({ label, name, required, items, cols, value, type, span, style, d
                             {label ?
                                 <div className={classNames(className ?? 'step-item__field', span && `span-${span}`)}>
                                     <label className="field-title step-item__title" htmlFor={name}>{label.text}</label>
-                                    <TextField name={name} value={value} type={type} required={required} />
+                                    <TextField fieldsName={fieldsName} name={name} value={value} type={type} required={required} />
                                 </div>
-                                : <TextField name={name} value={value} type={type} required={required} />
+                                : <TextField fieldsName={fieldsName} name={name} value={value} type={type} required={required} />
                             }
                         </>
                     : type === FieldType.Radio ?
@@ -66,7 +64,7 @@ const Field = ({ label, name, required, items, cols, value, type, span, style, d
                                 {label.tooltip && <Tooltip {...label.tooltip} />}
                             </div>
                         }
-                        <TextField className={className} name={name} value={value} type={type} title={title} descr={descr} required={required} size={size} />
+                        <TextField className={className} fieldsName={fieldsName} name={name} value={value} type={type} title={title} descr={descr} required={required} size={size} />
                     </div>
             }
         </>

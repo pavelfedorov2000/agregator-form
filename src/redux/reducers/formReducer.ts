@@ -1,6 +1,7 @@
 import { FieldType } from "../../enums/FieldType";
 import { StepName } from "../../enums/StepName";
 import { TooltipList } from "../../enums/Tooltip";
+import { Checkbox } from "../../interfaces/Checkbox";
 import { ActionType } from "../actionsList";
 import { FormAction, FormState } from "../types";
 
@@ -8,7 +9,7 @@ const initialState: FormState = {
     data: [{
         title: StepName.Basic,
         items: [{
-            name: 'basic',
+            name: 'basic-fields',
             fields: [{
                 label: {
                     text: 'What’s your name?',
@@ -50,13 +51,15 @@ const initialState: FormState = {
                 type: 'textarea',
                 span: 2,
                 name: 'project-description',
-                value: ''
+                value: '',
+                inResult: true,
             }]
         }, {
             legend: {
                 text: 'How can we help you?'
             },
             name: 'help',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 items: [{
@@ -76,6 +79,7 @@ const initialState: FormState = {
                 text: 'What is the product category?'
             },
             name: 'product-category',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -109,6 +113,7 @@ const initialState: FormState = {
                 text: 'What is the product type?'
             },
             name: 'product-type',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 items: [{
@@ -161,25 +166,25 @@ const initialState: FormState = {
             },
             name: 'prototype-timeframe',
             fieldsClass: 'step-item__line-radios',
+            inResult: true,
             fields: [{
                 type: FieldType.Radio,
                 style: 'range',
                 items: [{
                     text: 'To Be Discussed'
                 }, {
-                    text: '6-8 months'
+                    text: '3 months'
                 }, {
-                    text: '10-12 months'
+                    text: '6 months'
                 }, {
-                    text: '12-18 months'
-                }, {
-                    text: 'Till completion'
+                    text: '1 year'
                 }]
             }]
         }, {
             legend: {
                 text: 'How many prototypes do you need?'
             },
+            inResult: true,
             fields: [{
                 name: 'prototypes-number',
                 value: '',
@@ -189,6 +194,7 @@ const initialState: FormState = {
             legend: {
                 text: 'What are the most important features of the prototype?'
             },
+            inResult: true,
             fields: [{
                 name: 'prototype-features',
                 type: 'textarea',
@@ -199,6 +205,7 @@ const initialState: FormState = {
                 text: 'Target market'
             },
             name: 'target-market',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -225,6 +232,7 @@ const initialState: FormState = {
             },
             name: 'production-timeframe',
             fieldsClass: 'step-item__line-radios',
+            inResult: true,
             fields: [{
                 type: FieldType.Radio,
                 style: 'range',
@@ -251,7 +259,8 @@ const initialState: FormState = {
                 },
                 name: 'target-retail',
                 descr: 'USD per unit',
-                value: ''
+                value: '',
+                inResult: true,
             }]
         }, {
             fields: [{
@@ -295,6 +304,7 @@ const initialState: FormState = {
                 text: 'Power source'
             },
             name: 'power-source',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 items: [{
@@ -320,6 +330,7 @@ const initialState: FormState = {
                 text: 'How users interact with the device?'
             },
             name: 'users-interaction',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 items: [{
@@ -335,6 +346,7 @@ const initialState: FormState = {
                 text: 'Interfaces'
             },
             name: 'interfaces',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -371,6 +383,7 @@ const initialState: FormState = {
                 text: 'Sensors'
             },
             name: 'sensors',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -400,6 +413,7 @@ const initialState: FormState = {
                 text: 'Visual indication'
             },
             name: 'visual-indication',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -425,6 +439,7 @@ const initialState: FormState = {
                 text: 'Do you want to update device software remotely?'
             },
             name: 'update-soft',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 items: [{
@@ -453,6 +468,7 @@ const initialState: FormState = {
                 text: 'Material of the enclosure'
             },
             name: 'enclosure-material',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -553,6 +569,7 @@ const initialState: FormState = {
                 text: 'Preferred color solution'
             },
             name: 'color-solution',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -577,6 +594,7 @@ const initialState: FormState = {
             },
             name: 'preferred-colors',
             fieldsClass: 'colors',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 name: 'color',
@@ -625,6 +643,7 @@ const initialState: FormState = {
                 text: 'Surface finishing'
             },
             name: 'surface-finishing',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -652,6 +671,7 @@ const initialState: FormState = {
                 small: '(select all that apply)'
             },
             name: 'product-usage',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -679,6 +699,7 @@ const initialState: FormState = {
                 text: 'Any of the following may affect the unit'
             },
             name: 'unit-affect',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -750,6 +771,7 @@ const initialState: FormState = {
                 small: '(select all that apply)'
             },
             name: 'need-app',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -771,6 +793,7 @@ const initialState: FormState = {
                 text: 'Who develops the apps?',
             },
             name: 'app-developer',
+            inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
                 cols: [{
@@ -795,20 +818,166 @@ const initialState: FormState = {
                 value: '',
             }]
         }]
+    }, {
+        title: StepName.Summary,
+        subtitle: 'Well done, You are a superstar! Let’s check your contact information',
+        items: [{
+            legend: {
+                text: 'What’s your role in the process?'
+            },
+            name: 'process-role',
+            inResult: true,
+            fields: [{
+                type: FieldType.Checkbox,
+                cols: [{
+                    items: [{
+                        text: 'Individual'
+                    }, {
+                        text: 'Investor'
+                    }]
+                }, {
+                    items: [{
+                        text: 'Company representative'
+                    }]
+                }]
+            }]
+        }, {
+            legend: {
+                text: 'Your contacts'
+            },
+            name: 'contacts',
+            columnsCount: 2,
+            fieldsClass: 'contacts__fields',
+            fields: [{
+                label: {
+                    text: 'First and last name',
+                    tooltip: {
+                        type: TooltipList.Attention,
+                        text: 'Mandatory question'
+                    }
+                },
+                name: 'name',
+                required: true,
+                value: '',
+                inResult: true,
+            }, {
+                label: {
+                    text: 'E-mail',
+                    tooltip: {
+                        type: TooltipList.Attention,
+                        text: 'Mandatory question'
+                    }
+                },
+                type: 'email',
+                name: 'email',
+                required: true,
+                value: '',
+                inResult: true,
+            }, {
+                label: {
+                    text: 'Phone number',
+                    tooltip: {
+                        type: TooltipList.Attention,
+                        text: 'Mandatory question'
+                    }
+                },
+                type: 'tel',
+                name: 'product-name',
+                required: true,
+                value: '',
+                inResult: true,
+            }]
+        }, {
+            legend: {
+                text: 'Any questions or comments?'
+            },
+            fields: [{
+                type: FieldType.Textarea,
+                name: 'questions',
+                value: ''
+            }]
+        }]
     }],
-    currentStep: 6,
+    currentStep: 1,
 };
 
 const formReducer = (state = initialState, action: FormAction): FormState => {
     switch (action.type) {
         case ActionType.SetInputValue:
-            const currentStep = state.data.filter((_, index) => index === action.payload.step);
-            console.log(currentStep);
-            
             return {
                 ...state,
+                data: state.data.map((step, index) => {
+                    if (index === action.payload.step - 1) {
+                        return {
+                            ...step,
+                            items: step.items?.map((item) => {
+                                if (item.name === action.payload.fieldsName) {
+                                    return {
+                                        ...item,
+                                        fields: item.fields.map((field) => {
+                                            if (field.name === action.payload.name) {
+                                                return {
+                                                    ...field,
+                                                    value: action.payload.value
+                                                }
+                                            }
 
+                                            return field;
+                                        })
+                                    }
+                                }
+
+                                return item;
+                            })
+                        }
+                    }
+
+                    return step;
+                })
             };
+        case ActionType.SetCheckboxValue:
+            return {
+                ...state,
+                data: state.data.map((step, index) => {
+                    if (index === action.payload.step - 1) {
+                        return {
+                            ...step,
+                            items: step.items?.map((item) => {
+                                if (item.name === action.payload.name) {
+                                    return {
+                                        ...item,
+                                        values: item.fields.map((field) => {
+                                            let includes, newValues;
+                                            if (field.cols?.length) {
+                                                const items = field.cols?.map((col) => {
+                                                    return [...col.items as any[]]
+                                                })
+                                                includes = item.values && item.values.map((item: any) => item.text).includes(action.payload.value);
+                                                newValues = items.filter((item: any) => item.find((element: any) => element.text === action.payload.value))[0].filter((item: any) => item.text === action.payload.value);
+                                            } else {
+                                                includes = item.values && item.values[0].map((item: any) => item.text).includes(action.payload.value);
+                                                newValues = field.items?.filter((elem) => elem.text === action.payload.value);
+                                            }
+
+                                            return item.values ?
+                                                includes ? item.values[0].filter((item: any) => item.text !== action.payload.value)
+                                                    : [
+                                                        ...item.values[0],
+                                                        ...newValues as any[]
+                                                    ]
+                                                : newValues
+                                        })
+                                    }
+                                }
+
+                                return item;
+                            })
+                        }
+                    }
+
+                    return step;
+                })
+            }
         case ActionType.NextStep:
             return {
                 ...state,
@@ -818,6 +987,11 @@ const formReducer = (state = initialState, action: FormAction): FormState => {
             return {
                 ...state,
                 currentStep: state.currentStep - 1
+            };
+        case ActionType.GoToStep:
+            return {
+                ...state,
+                currentStep: action.payload
             };
         default:
             return state;

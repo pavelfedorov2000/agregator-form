@@ -5,6 +5,7 @@ import { Label } from "./Label";
 export interface Field {
     className?: string;
     label?: Label;
+    fieldsName?: string;
     name?: string;
     required?: boolean;
     value?: string;
@@ -16,4 +17,5 @@ export interface Field {
     title?: string;
     descr?: string;
     size?: string;
+    inResult?: boolean;
 }

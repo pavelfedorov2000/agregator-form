@@ -3,6 +3,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Step as StepType } from "../interfaces/Step";
 import FieldsGroup from "./FieldsGroup";
 import Legend from "./Legend";
+import Result from "./Result";
 
 interface Props extends StepType {
     index: number;
@@ -11,7 +12,6 @@ interface Props extends StepType {
 const Step = ({ index, title }: Props) => {
     const { data, currentStep } = useTypedSelector((state) => state.formReducer);
     const stepData = data[currentStep - 1];
-    console.log(stepData);
 
     return (
         <fieldset className={classNames('step', {
@@ -19,13 +19,17 @@ const Step = ({ index, title }: Props) => {
         })}>
             <div className="step__header">
                 <Legend className="step-title" text={title} />
-                <div className="step-num">{currentStep}/{data.length}</div>
+                <div className="step-num">{currentStep}/{data.length + 1}</div>
             </div>
-            <div className="step__content">
-                {stepData.items.map((item) => (
-                    <FieldsGroup {...item} />
-                ))}
-            </div>
+            {currentStep === data.length + 1
+                ? <Result />
+                :
+                <div className="step__content">
+                    {stepData.items?.map((item) => (
+                        <FieldsGroup {...item} />
+                    ))}
+                </div>
+            }
         </fieldset>
     );
 };

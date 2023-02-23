@@ -1,3 +1,4 @@
+import { BaseInput, CheckboxInput, Input } from "../../interfaces/Input";
 import { Step } from "../../interfaces/Step";
 import { ActionType } from "../actionsList";
 
@@ -8,16 +9,16 @@ export interface FormState {
 
 interface SetInputValueAction {
     type: ActionType.SetInputValue;
-    payload: { step: number, name: string, value: string };
-}
-
-interface SetRadioValueAction {
-    type: ActionType.SetRadioValue;
-    payload: { step: number, name: string, value: string };
+    payload: Input;
 }
 
 interface SetCheckboxValueAction {
     type: ActionType.SetCheckboxValue;
+    payload: CheckboxInput;
+}
+
+interface SetRadioValueAction {
+    type: ActionType.SetRadioValue;
     payload: { step: number, name: string, value: string };
 }
 

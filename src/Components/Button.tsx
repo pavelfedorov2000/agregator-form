@@ -1,9 +1,9 @@
 import { FormButton } from "../interfaces/FormButton";
 import classNames from 'classnames';
 
-const Button = ({ text, background }: FormButton) => {
+const Button = ({ onClick, text, background }: FormButton) => {
     return (
-        <button className={classNames('btn', {
+        <button onClick={onClick} className={classNames('btn', {
             'btn--with_bg': background
         })} type="button">
             {text}
