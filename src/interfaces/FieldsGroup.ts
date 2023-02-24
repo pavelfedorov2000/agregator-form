@@ -1,4 +1,3 @@
-import { Checkbox } from "./Checkbox";
 import { Field } from "./Field";
 import { Tooltip } from "./Tooltip";
 
@@ -12,6 +11,7 @@ export interface FieldsGroup {
     columnsCount?: number;
     fields: Field[];
     values?: any[];
+    value?: string;
     fieldsClass?: string;
     inResult?: boolean;
 }

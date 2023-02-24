@@ -9,8 +9,8 @@ const FieldsGroup = ({ legend, name, fields, fieldsClass, columnsCount }: Fields
             {legend && <Legend className="field-title step-item__title" {...legend} />}
 
             <div className={classNames('step-item__fields grid', fieldsClass && fieldsClass, name && `${name}__fields`, columnsCount && `col-${columnsCount}`, fields[0].cols && 'col-2')}>
-                {fields.map((field) => (
-                    <Field {...field} fieldsName={name} name={field.name ?? name} />
+                {fields.map((field, index) => (
+                    <Field key={field.name ?? index} {...field} fieldsName={name} name={field.name ?? name} />
                 ))}
             </div>
         </fieldset>

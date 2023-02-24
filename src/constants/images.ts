@@ -6,7 +6,5 @@ import watches05 from '../assets/images/watches/05.svg';
 import watches06 from '../assets/images/watches/06.png';
 import watches07 from '../assets/images/watches/07.png';
 import watches08 from '../assets/images/watches/08.png';
-import watches09 from '../assets/images/watches/9.svg';
-import watches10 from '../assets/images/watches/10.png';
 
-export const WATCHES = [watches01, watches02, watches03, watches04, watches05, watches06, watches07, watches08, watches09, watches10];
+export const WATCHES = [watches01, watches02, watches03, watches04, watches05, watches06, watches07, watches08];

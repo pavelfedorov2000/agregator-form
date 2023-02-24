@@ -42,6 +42,20 @@ body {
     }
 }
 
+.container {
+    max-width: 141rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+.wrapper {
+    position: relative;
+
+    @media(max-width: 992px) {
+        overflow-x: hidden;
+    }
+}
+
 h1,
 h2,
 h3,

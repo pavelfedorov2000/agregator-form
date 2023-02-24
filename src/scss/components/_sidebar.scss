@@ -1,0 +1,26 @@
+.sidebar {
+    position: sticky;
+    top: 8rem;
+    height: fit-content;
+    @extend %flex-col-center;
+
+    @media(max-width: 992px) {
+        position: relative;
+        top: 0;
+        left: 0;
+        align-items: flex-start;
+    }
+
+    // .sidebar__img
+
+    &__img {
+        position: relative;
+        width: 35rem;
+        height: 35rem;
+        margin-bottom: 3rem;
+
+        @media(max-width: 992px) {
+            display: none;
+        }
+    }
+}

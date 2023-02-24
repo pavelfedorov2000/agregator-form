@@ -37,15 +37,10 @@
                 &:hover {
                     background-color: #fff;
                     border-color: #fff;
-                    color: $blue;
-                    //box-shadow: 0px 0px 2rem #0000FF;
+                    color: var(--blue);
                 }
             }
         }
-    }
-
-    @media(max-width: 500px) {
-        //height: 3.9rem;
     }
 }
 
@@ -80,30 +75,23 @@
     }
 }
 
-.next-btn {
-    background-color: $blue;
-
-
+/* .next-btn {
+    background-color: var(--blue);
 
     &:active {
         background-color: #3131FF;
     }
 
-    /* &:focus {
-        border: 0.2rem solid #FFFFFF;
-    } */
-
     &:disabled {
         background-color: #ACB5BE;
     }
-}
+} */
 
-.download-pdf {
+/* .download-pdf {
     width: 16.5rem;
 
     @media(max-width: 500px) {
         width: 17.1rem;
-        //width: 171/375 * 100%;
     }
 }
 
@@ -112,9 +100,8 @@
 
     @media(max-width: 500px) {
         width: 13.3rem;
-        //width: 133/375 * 100%;
     }
-}
+} */
 
 .download-pdf,
 .book-call {

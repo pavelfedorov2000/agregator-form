@@ -7,7 +7,7 @@ const Sidebar = () => {
     const { currentStep } = useTypedSelector((state) => state.formReducer);
 
     return (
-        <aside className="sidebar step__aside">
+        <aside className="sidebar">
             <img className="sidebar__img" src={WATCHES[currentStep - 1]} alt="часы" />
             <TopNav />
             <Nav />

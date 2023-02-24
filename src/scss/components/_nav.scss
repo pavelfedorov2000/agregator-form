@@ -1,0 +1,126 @@
+.nav {
+    $this: &;
+
+    @media(max-width: 992px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        z-index: 101;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background-color: #000;
+    }
+
+    &.active {
+        @media(max-width: 992px) {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+
+    &__inner {
+        @media(max-width: 992px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    }
+
+    &__arrow-btn {
+        display: none;
+
+        @media(max-width: 992px) {
+            display: block;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-180deg);
+        }
+    }
+
+    // .nav__list
+
+    &__list {
+        display: grid;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+    }
+
+    // .nav__list-item
+
+    &__item {
+        position: relative;
+        padding-left: 2.7rem;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+        }
+
+        &:before {
+            @extend %pos-center-y;
+            left: 0;
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 50%;
+            border: 0.1rem solid #FFF;
+        }
+
+        &:after {
+            top: calc(100% - 0.4rem);
+            left: 1rem;
+            width: 0.1rem;
+            height: 3.8rem;
+            background-color: #fff;
+        }
+
+        &--current {
+            #{$this}__btn {
+                font-weight: 700;
+            }
+
+            &:before {
+                background-color: #fff;
+            }
+
+        }
+
+        &--completed {
+            #{$this}__btn {
+                font-weight: 700;
+            }
+
+            &:before,
+            &:after {
+                background-color: var(--blue);
+            }
+
+            &:before {
+                border: none;
+            }
+        }
+    }
+
+    &__btn {
+        font-size: 2.2rem;
+        line-height: 2.9rem;
+        color: #fff;
+    }
+
+    // .nav__status
+
+    &__status {
+        font-weight: 700;
+
+        &--completed {
+            color: var(--blue);
+        }
+    }
+}

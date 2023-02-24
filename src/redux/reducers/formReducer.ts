@@ -1,15 +1,15 @@
 import { FieldType } from "../../enums/FieldType";
 import { StepName } from "../../enums/StepName";
 import { TooltipList } from "../../enums/Tooltip";
-import { Checkbox } from "../../interfaces/Checkbox";
 import { ActionType } from "../actionsList";
-import { FormAction, FormState } from "../types";
+import { FormAction, FormState } from "../types/form";
 
 const initialState: FormState = {
     data: [{
         title: StepName.Basic,
         items: [{
-            name: 'basic-fields',
+            name: 'basic',
+            inResult: true,
             fields: [{
                 label: {
                     text: 'What’s your name?',
@@ -178,8 +178,8 @@ const initialState: FormState = {
                     text: '6 months'
                 }, {
                     text: '1 year'
-                }]
-            }]
+                }],
+            }],
         }, {
             legend: {
                 text: 'How many prototypes do you need?'
@@ -188,7 +188,8 @@ const initialState: FormState = {
             fields: [{
                 name: 'prototypes-number',
                 value: '',
-                descr: 'pcs'
+                descr: 'pcs',
+                inResult: true,
             }]
         }, {
             legend: {
@@ -198,7 +199,8 @@ const initialState: FormState = {
             fields: [{
                 name: 'prototype-features',
                 type: 'textarea',
-                value: ''
+                value: '',
+                inResult: true
             }]
         }, {
             legend: {
@@ -246,9 +248,10 @@ const initialState: FormState = {
                     text: '12-18 months'
                 }, {
                     text: 'Till completion'
-                }]
-            }]
+                }],
+            }],
         }, {
+            inResult: true,
             fields: [{
                 label: {
                     text: 'Target retail sale price',
@@ -294,8 +297,8 @@ const initialState: FormState = {
                     text: '12-18 months'
                 }, {
                     text: 'Till completion'
-                }]
-            }]
+                }],
+            }],
         }]
     }, {
         title: StepName.Electronics,
@@ -315,8 +318,6 @@ const initialState: FormState = {
                         type: TooltipList.Question,
                         text: '(e.g. 12 VDC like your laptop is powered with external power adapter)'
                     }
-                }, {
-                    text: 'Other (type your answer)'
                 }, {
                     text: 'External AC Power',
                     tooltip: {
@@ -372,10 +373,6 @@ const initialState: FormState = {
                     }, {
                         text: 'Ethernet'
                     }]
-                }, {
-                    items: [{
-                        text: 'Other (type your answer)'
-                    }]    
                 }]
             }]
         }, {
@@ -562,7 +559,7 @@ const initialState: FormState = {
                     }, {
                         text: 'House'
                     }]
-                }]
+                }],
             }]
         }, {
             legend: {
@@ -592,12 +589,11 @@ const initialState: FormState = {
             legend: {
                 text: 'What are your preferred colors?'
             },
-            name: 'preferred-colors',
+            name: 'preferred-color',
             fieldsClass: 'colors',
             inResult: true,
             fields: [{
                 type: FieldType.Checkbox,
-                name: 'color',
                 style: 'color',
                 items: [{
                     bg: '#000'
@@ -848,6 +844,7 @@ const initialState: FormState = {
             name: 'contacts',
             columnsCount: 2,
             fieldsClass: 'contacts__fields',
+            inResult: true,
             fields: [{
                 label: {
                     text: 'First and last name',
@@ -882,7 +879,7 @@ const initialState: FormState = {
                     }
                 },
                 type: 'tel',
-                name: 'product-name',
+                name: 'phone',
                 required: true,
                 value: '',
                 inResult: true,
@@ -899,6 +896,7 @@ const initialState: FormState = {
         }]
     }],
     currentStep: 1,
+    success: false,
 };
 
 const formReducer = (state = initialState, action: FormAction): FormState => {
@@ -952,15 +950,15 @@ const formReducer = (state = initialState, action: FormAction): FormState => {
                                                 const items = field.cols?.map((col) => {
                                                     return [...col.items as any[]]
                                                 })
-                                                includes = item.values && item.values.map((item: any) => item.text).includes(action.payload.value);
-                                                newValues = items.filter((item: any) => item.find((element: any) => element.text === action.payload.value))[0].filter((item: any) => item.text === action.payload.value);
+                                                includes = item.values && item.values.map((item: any) => item.text ?? item.bg).includes(action.payload.value);
+                                                newValues = items.filter((item: any) => item.find((element: any) => element.text ? element.text === action.payload.value : element.bg === action.payload.value))[0].filter((item: any) => item.text ? item.text === action.payload.value : item.bg === action.payload.value);
                                             } else {
-                                                includes = item.values && item.values[0].map((item: any) => item.text).includes(action.payload.value);
-                                                newValues = field.items?.filter((elem) => elem.text === action.payload.value);
+                                                includes = item.values && item.values[0].map((item: any) => item.text ?? item.bg).includes(action.payload.value);
+                                                newValues = field.items?.filter((elem) => elem.text ? elem.text === action.payload.value : elem.bg === action.payload.value);
                                             }
 
                                             return item.values ?
-                                                includes ? item.values[0].filter((item: any) => item.text !== action.payload.value)
+                                                includes ? item.values[0].filter((item: any) => item.text ? item.text !== action.payload.value : item.bg !== action.payload.value)
                                                     : [
                                                         ...item.values[0],
                                                         ...newValues as any[]
@@ -978,6 +976,29 @@ const formReducer = (state = initialState, action: FormAction): FormState => {
                     return step;
                 })
             }
+        case ActionType.SetRadioValue:
+            return {
+                ...state,
+                data: state.data.map((step, index) => {
+                    if (index === action.payload.step - 1) {
+                        return {
+                            ...step,
+                            items: step.items?.map((item) => {
+                                if (item.name === action.payload.name) {
+                                    return {
+                                        ...item,
+                                        value: action.payload.value
+                                    }
+                                }
+
+                                return item;
+                            })
+                        }
+                    }
+
+                    return step;
+                })
+            };
         case ActionType.NextStep:
             return {
                 ...state,
@@ -992,6 +1013,17 @@ const formReducer = (state = initialState, action: FormAction): FormState => {
             return {
                 ...state,
                 currentStep: action.payload
+            };
+        case ActionType.SetSuccess:
+            return {
+                ...state,
+                success: true,
+            };
+        case ActionType.SubmitForm:
+            return {
+                data: initialState.data,
+                currentStep: 1,
+                success: false
             };
         default:
             return state;

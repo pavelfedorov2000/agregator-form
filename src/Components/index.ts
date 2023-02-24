@@ -7,8 +7,10 @@ export { default as Legend } from './Legend';
 
 export { default as Field } from './Field';
 export { default as Step } from './Step';
+export { default as StepHeader } from './StepHeader';
 
 export { default as Sidebar } from './Sidebar';
 export { default as Nav } from './Nav';
+export { default as ProgressPercent } from './ProgressPercent';
 export { default as TopNav } from './TopNav';
 export { default as Result } from './Result';

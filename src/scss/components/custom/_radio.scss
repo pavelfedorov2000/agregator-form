@@ -1,6 +1,7 @@
-// ===================== RADIO ===================== //
 .radiobutton {
     $this: &;
+
+    cursor: pointer;
 
     &__input {
         width: 1px;
@@ -8,7 +9,6 @@
         overflow: hidden;
         position: absolute;
         clip: rect(0 0 0 0);
-        //padding-top: 6.8rem;
 
         &:checked ~ #{$this} {
             &__style {
@@ -27,7 +27,6 @@
     }
 
     &__text {
-        cursor: pointer;
         margin-left: 4rem;
 
         @media(max-width: 767px) {
@@ -94,11 +93,10 @@
                 }
 
                 &__text {
-                    padding-top: 6.8rem;
                     margin-left: 0;
 
                     @media(max-width: 767px) {
-                        margin-left: 0;
+                        margin-left: 6.8rem;
                     }
                 }
             }

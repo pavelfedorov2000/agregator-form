@@ -1,11 +1,18 @@
-import { FormButton } from "../interfaces/FormButton";
 import classNames from 'classnames';
 
-const Button = ({ onClick, text, background }: FormButton) => {
+interface Props {
+    onClick: () => void;
+    className?: string;
+    text: string;
+    background?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+}
+
+const Button = ({ onClick, className, text, background, type }: Props) => {
     return (
-        <button onClick={onClick} className={classNames('btn', {
+        <button onClick={onClick} className={classNames('btn', className && className, {
             'btn--with_bg': background
-        })} type="button">
+        })} type={type ?? 'button'}>
             {text}
         </button>
     );

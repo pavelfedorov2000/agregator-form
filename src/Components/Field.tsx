@@ -41,14 +41,14 @@ const Field = ({ label, name, fieldsName, required, items, cols, value, type, sp
                             <>
                                 {
                                     items && items.map((item, index) => (
-                                        <RadioButton index={index} name={name} style={style} {...item} />
+                                        <RadioButton key={index} index={index} items={items} name={name} style={style} {...item} />
                                     ))
                                 }
                                 {
                                     cols && cols.map((col, i) => (
                                         <div key={i} className="step-item__col">
                                             {col.items?.map((item, j) => (
-                                                <RadioButton index={j} name={name} style={style} {...item} />
+                                                <RadioButton key={j} index={j} items={col.items} name={name} style={style} {...item} />
                                             ))}
                                         </div>
                                     ))

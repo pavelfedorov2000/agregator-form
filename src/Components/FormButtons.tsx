@@ -4,13 +4,14 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import Button from "./Button";
 
 const FormButtons = () => {
-    const { currentStep } = useTypedSelector((state) => state.formReducer);
-    const { goToPrevStep, goToNextStep } = useActions();
+    const { data, currentStep } = useTypedSelector((state) => state.formReducer);
+    const { goToPrevStep, goToNextStep, setSuccess } = useActions();
+
 
     return (
         <div className="form-buttons">
             {currentStep !== 1 && <Button onClick={() => goToPrevStep()} text={FormButton.Back} />}
-            <Button onClick={() => goToNextStep()} text={FormButton.Next} background />
+            <Button onClick={() => currentStep === data.length + 1 ? setSuccess() : goToNextStep()} text={FormButton.Next} background />
         </div>
     );
 };

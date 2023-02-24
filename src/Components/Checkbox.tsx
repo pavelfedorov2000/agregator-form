@@ -15,7 +15,7 @@ const Checkbox = ({ name, text, small, bg, style, light }: CheckboxType) => {
 
     return (
         <label className={classNames('checkbox', style && `checkbox--style_${style}`)}>
-            <input onChange={() => setCheckboxValue({ step: currentStep, name, value: text })} className="checkbox__input" name={name} type="checkbox" checked={isChecked} />
+            <input onChange={() => setCheckboxValue({ step: currentStep, name, value: text ?? bg })} className="checkbox__input" name={name} type="checkbox" checked={isChecked} />
             <span className="checkbox__style" style={{ backgroundImage: `url(${light ? blackCheckIcon : checkIcon})`, backgroundColor: bg ?? 'transparent', border: bg === '#000' || !bg ? '0.1rem solid #fff' : 'none' }}></span>
             {text && <span className="checkbox__text">{text}</span>}
             {small && <small>{small}</small>}

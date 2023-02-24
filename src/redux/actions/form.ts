@@ -11,9 +11,9 @@ export const setCheckboxValue = ({ step, name, value }: CheckboxInput) => ({
     payload: { step, name, value }
 });
 
-export const setRadioValue = ({ step, name }: Input) => ({
+export const setRadioValue = ({ step, name, value }: CheckboxInput) => ({
     type: ActionType.SetRadioValue,
-    payload: { step, name }
+    payload: { step, name, value }
 });
 
 export const goToPrevStep = () => ({
@@ -27,4 +27,12 @@ export const goToNextStep = () => ({
 export const goToStep = (index: number) => ({
     type: ActionType.GoToStep,
     payload: index
+});
+
+export const submitForm = () => ({
+    type: ActionType.SubmitForm
+});
+
+export const setSuccess = () => ({
+    type: ActionType.SetSuccess
 });
