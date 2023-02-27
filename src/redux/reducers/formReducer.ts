@@ -338,8 +338,6 @@ const initialState: FormState = {
                     text: 'Standalone unit'
                 }, {
                     text: 'Use mobile phone to control'
-                }, {
-                    text: 'Other (type your answer)',
                 }]
             }]
         }, {
@@ -515,7 +513,7 @@ const initialState: FormState = {
                 descr: 'inch',
                 size: 'small',
                 value: ''
-                }, {
+            }, {
                 className: 'input-field',
                 name: 'unit-dimensions-height',
                 title: 'Height',

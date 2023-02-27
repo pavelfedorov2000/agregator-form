@@ -24,14 +24,14 @@ const ResultItem = ({ index, title, items }: Props) => {
                         {
                             !item.fields.some((field) => field.label)
                             && (item.value
-                            || item.values)
+                                || item.values)
                             && item.fields.some((field) => field.value !== '')
                             &&
                             <div className="result-item__item-title">
                                 {item.legend?.text}
                             </div>
                         }
-                        
+
                         <div className="result-item__item-values">
                             {item.value && <div className="result-value">{item.value}</div>}
                             {item.values && item.values[0].length !== 0 && item.values[0].map((value: Checkbox, index: number) => (
@@ -53,7 +53,7 @@ const ResultItem = ({ index, title, items }: Props) => {
                             {(!item.value && !item.values) && item.fields.filter((field) => field.inResult && field.value !== '').map((field, index) => (
                                 <div key={field.name ?? index} className="result-item__item">
                                     <div className="result-item__item-title">
-                                        {field.label?.text}
+                                        {field.label ? field.label.text : item.legend?.text}
                                     </div>
                                     <div className="result-value">{field.value}</div>
                                 </div>

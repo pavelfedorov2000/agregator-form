@@ -14,10 +14,10 @@ const Thanks = () => {
                     You can download a PDF with your data, book a call.
                 </div>
                 <div className="thanks__buttons">
-                    <a href="#" className="btn next-btn download-pdf">
+                    <a href="#" className="btn download-pdf btn--with_bg">
                         Download a PDF
                     </a>
-                    <a href="#" className="btn back-btn book-call">
+                    <a href="#" className="btn book-call">
                         Book a call
                     </a>
                 </div>
